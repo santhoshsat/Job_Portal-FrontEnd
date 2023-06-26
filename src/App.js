@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-// import GetAllJobsComponent from './components/GetAllJobsComponent/GetAllJobsComponent';
+// import GetAllJobsComponent from './components/GetAlljobsComponent/GetAlljobsComponent';
 import AddNewJobsComponent from './components/AddnewjobsComponent/AddnewjobsComponent';
  import EditJobsComponent from './components/EditjobsComponent/EditjobsComponent';
 
