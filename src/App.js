@@ -6,6 +6,7 @@ import AddNewJobsComponent from './components/AddnewjobsComponent/AddnewjobsComp
 
 function App() {
   return (
+    // add router 
     <Router>
             <div className="container">
               <h1>Job Portal App</h1>
