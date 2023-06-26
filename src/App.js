@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-// import GetAllJobsComponent from './components/GetAlljobsComponent/GetAlljobsComponent';
+import GetAllJobsComponent from './components/GetAlljobsComponent/GetAlljobsComponent';
 import AddNewJobsComponent from './components/AddnewjobsComponent/AddnewjobsComponent';
  import EditJobsComponent from './components/EditjobsComponent/EditjobsComponent';
 
@@ -16,7 +16,7 @@ function App() {
                 <Link to="/admin/edit" >Edit Jobs</Link>
             </nav>
            <Routes>
-                 {/* <Route exact path='/' element={<GetAllJobsComponent/>}></Route> */}
+                 <Route exact path='/' element={<GetAllJobsComponent/>}></Route>
                  <Route path='/admin/add' element={<AddNewJobsComponent/>}></Route>
                  <Route path='/admin/edit' element={<EditJobsComponent/>}></Route>
           </Routes>

@@ -33,7 +33,3 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Works for Firefox
-input[type="number"] {
-  -moz-appearance: textfield;
-} */
