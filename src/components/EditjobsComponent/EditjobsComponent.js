@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './AddnewjobsComponent.css'
+import './EditjobsComponent.css'
 
-class AddNewJobsComponent extends Component {
+class EditJobsComponent extends Component {
   constructor(props)
     {
         super(props)
@@ -51,12 +51,42 @@ class AddNewJobsComponent extends Component {
         jobSkills : event.target.value
       })
     }
+
+    jobIDValidator = () => {
+      if (this.state.jobID !== 0)
+      {
+        fetch('http://localhost:3500/api/v1/jobs/validate',{
+                method:'POST',
+                crossDomain: true,
+                headers: {
+                    'Content-type':'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify({
+                    jobID : this.state.jobID
+                })
+            })
+            .then((response) => response.json())
+            .then((data) => 
+            {
+                this.setState({
+                  jobTitle: data.jobTitle ,
+                  jobID: data.jobID ,
+                  jobCompany: data.jobCompany ,
+                  jobLocation: data.jobLocation ,
+                  jobPreference: data.jobPreference ,
+                  jobSkills: data.jobSkills
+                })
+            }
+        )
+      }
+    }
     
     formSubmitHandler = (event) =>{
         event.preventDefault()
 
         fetch('http://localhost:3500/api/v1/jobs',{
-        method:'POST',
+        method:'PATCH',
         crossDomain: true,
         headers: {
             'Content-type':'application/json',
@@ -78,7 +108,7 @@ class AddNewJobsComponent extends Component {
                 alert(data.message)
             }
             else{
-                alert(`The new ${data.jobTitle} job is added successfully`)
+                alert(`The new ${data.jobTitle} job is updated successfully`)
                 window.location.href = '/'
             }
         })
@@ -89,6 +119,20 @@ class AddNewJobsComponent extends Component {
     return (
         <form className='form-container' onSubmit={this.formSubmitHandler}>
             <h2>Adding a new patient data</h2>
+            <div className='form-group'>
+            <label>Job ID</label>
+            <input
+            type='text'
+            placeholder='Enter the job ID'
+            value={jobID}
+            onChange={this.jobIDHandler}
+            required
+            />
+        </div>
+
+        <div>
+            <button onClick={this.jobIDValidator}>Check</button>
+        </div>
 
         <div className='form-group'>
             <label>Job Title</label>
@@ -97,17 +141,6 @@ class AddNewJobsComponent extends Component {
             placeholder='Enter the job title'
             value={jobTitle}
             onChange={this.jobTitleHandler}
-            required
-            />
-        </div>
-
-        <div className='form-group'>
-            <label>Job ID</label>
-            <input
-            type='text'
-            placeholder='Enter the job ID'
-            value={jobID}
-            onChange={this.jobIDHandler}
             required
             />
         </div>
@@ -159,7 +192,7 @@ class AddNewJobsComponent extends Component {
         </div>
 
         <div>
-            <button type='submit'>Add</button>
+            <button type='submit'>Update</button>
         </div>
         </form>
         
@@ -167,4 +200,4 @@ class AddNewJobsComponent extends Component {
   }
 }
 
-export default AddNewJobsComponent
+export default EditJobsComponent

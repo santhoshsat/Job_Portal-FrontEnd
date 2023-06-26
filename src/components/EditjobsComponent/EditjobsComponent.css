@@ -35,6 +35,20 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+
+  .form-container button {
+    display: block;
+    width: 50%;
+    padding: 8px;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #df9e26;
+    font-size: 20px;;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer; 
+  }
   
   .form-container button[type="submit"] {
     display: block;
@@ -46,6 +60,10 @@
     border: none;
     border-radius: 20px;
     cursor: pointer;
+  }
+
+  .form-container button:hover {
+    background-color: #be7e07;
   }
   
   .form-container button[type="submit"]:hover {
